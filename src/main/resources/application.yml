@@ -1,0 +1,18 @@
+spring:
+  data:
+    postgres:
+      host: localhost
+      port: 5432
+      database: postgres
+      username: postgres
+      password: pass
+  r2dbc:
+    name: ${spring.data.postgres.database}
+    url: r2dbc:postgresql://${spring.data.postgres.username}:${spring.data.postgres.password}@${spring.data.postgres.host}:${spring.data.postgres.port}/${spring.data.postgres.database}
+    username: ${spring.data.postgres.username}
+    password: ${spring.data.postgres.password}
+    pool:
+      enabled: true
+      initial-size: 3
+      max-size: 8
+      max-idle-time: 5s
